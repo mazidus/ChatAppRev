@@ -71,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String email=reg_email.getText().toString();
                 String pass=reg_pass.getText().toString();
                 String cpass=reg_cpass.getText().toString();
+                String status="New to this app";
 
                 if(TextUtils.isEmpty(name)||TextUtils.isEmpty(email)||TextUtils.isEmpty(pass)||TextUtils.isEmpty(cpass)){
                     progressDialog.dismiss();
@@ -100,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onSuccess(Uri uri) {
                                                         imageURI=uri.toString();
-                                                        Users users=new Users(auth.getUid(),name,email,imageURI);
+                                                        Users users=new Users(auth.getUid(),name,email,imageURI,status);
                                                         reference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                             @Override
                                                             public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -122,8 +123,9 @@ public class RegisterActivity extends AppCompatActivity {
                                         }
                                     });
                                 }else {
+                                    String status="New to this app";
                                     imageURI="https://firebasestorage.googleapis.com/v0/b/chat-5928b.appspot.com/o/images%20(1).png?alt=media&token=37ffa8c8-418f-43e2-9cce-a1e0558a660c";
-                                    Users users=new Users(auth.getUid(),name,email,imageURI);
+                                    Users users=new Users(auth.getUid(),name,email,imageURI,status);
                                     reference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull @NotNull Task<Void> task) {

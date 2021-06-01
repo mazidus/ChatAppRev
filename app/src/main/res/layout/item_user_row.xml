@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:background="@color/teal_200"
@@ -16,7 +16,7 @@
             android:layout_height="70dp"
             android:src="@drawable/index"
             app:civ_border_color="@color/black"
-            app:civ_border_width="3dp"/>
+            app:civ_border_width="2dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,9 +27,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
+                android:layout_margin="5dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
             <TextView
+                android:layout_margin="5dp"
                 android:id="@+id/user_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

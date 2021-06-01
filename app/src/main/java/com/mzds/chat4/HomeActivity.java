@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
     UserAdapter adapter;
     FirebaseDatabase database;
     ArrayList<Users> usersArrayList;
+    ImageView imgLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +64,35 @@ public class HomeActivity extends AppCompatActivity {
         mainUserRecycleView.setLayoutManager(new LinearLayoutManager(this));
         adapter=new UserAdapter(HomeActivity.this,usersArrayList);
         mainUserRecycleView.setAdapter(adapter);
+        imgLogout=findViewById(R.id.img_logout);
 
+        imgLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(HomeActivity.this,R.style.Dialog);
+                dialog.setContentView(R.layout.dialog_layout);
 
+                TextView yesBtn,noBtn;
+                yesBtn=dialog.findViewById(R.id.yes_btn);
+                noBtn=dialog.findViewById(R.id.no_btn);
+
+                yesBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(HomeActivity.this,RegisterActivity.class));
+                    }
+                });
+
+                noBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
 
         if(auth.getCurrentUser()==null)
         {

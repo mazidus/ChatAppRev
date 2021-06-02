@@ -1,4 +1,4 @@
-package com.mzds.chat4;
+package com.mzds.chat4.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.mzds.chat4.R;
+import com.mzds.chat4.ModelClass.Users;
 
 import org.jetbrains.annotations.NotNull;
 

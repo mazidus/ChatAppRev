@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".Activity.HomeActivity">
 
     <LinearLayout
         android:id="@+id/toolbar"
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:text="@string/app_name"
+            android:text="chat app revisi ke-8"
             android:textColor="@color/white"/>
         <ImageView
             android:id="@+id/img_logout"

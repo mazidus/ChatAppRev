@@ -1,4 +1,4 @@
-package com.mzds.chat4;
+package com.mzds.chat4.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mzds.chat4.Activity.ChatActivity;
+import com.mzds.chat4.Activity.HomeActivity;
+import com.mzds.chat4.R;
+import com.mzds.chat4.ModelClass.Users;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -38,14 +42,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.Viewholder> {
     public void onBindViewHolder(@NonNull @NotNull UserAdapter.Viewholder holder, int position) {
         Users users =usersArrayList.get(position);
 
-        holder.user_name.setText(users.name);
-        holder.user_status.setText(users.status);
-        Picasso.get().load(users.imageUri).into(holder.user_profile);
+        holder.user_name.setText(users.getName());
+        holder.user_status.setText(users.getStatus());
+        Picasso.get().load(users.getImageUri()).into(holder.user_profile);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(homeActivity,ChatActivity.class);
+                Intent intent = new Intent(homeActivity, ChatActivity.class);
 
                 intent.putExtra("name",users.getName());
                 intent.putExtra("receiverImg",users.getImageUri());

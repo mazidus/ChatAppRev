@@ -1,4 +1,4 @@
-package com.mzds.chat4;
+package com.mzds.chat4.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mzds.chat4.R;
+import com.mzds.chat4.Adapter.UserAdapter;
+import com.mzds.chat4.ModelClass.Users;
 
 import org.jetbrains.annotations.NotNull;
 

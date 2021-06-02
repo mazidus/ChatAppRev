@@ -1,4 +1,4 @@
-package com.mzds.chat4;
+package com.mzds.chat4.ModelClass;
 
 public class Users {
     String uid;

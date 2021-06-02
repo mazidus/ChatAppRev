@@ -1,10 +1,12 @@
-package com.mzds.chat4;
+package com.mzds.chat4.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.mzds.chat4.R;
 
 public class MainActivity extends AppCompatActivity {
 

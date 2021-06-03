@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 progressDialog.dismiss();
                                 startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                                finish();
                             }else {
                                 progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this,"login failed", Toast.LENGTH_SHORT).show();

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.mzds.chat4.Activity.ChatActivity;
 import com.mzds.chat4.Activity.HomeActivity;
 import com.mzds.chat4.R;
@@ -42,22 +43,29 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.Viewholder> {
     public void onBindViewHolder(@NonNull @NotNull UserAdapter.Viewholder holder, int position) {
         Users users =usersArrayList.get(position);
 
-        holder.user_name.setText(users.getName());
-        holder.user_status.setText(users.getStatus());
-        Picasso.get().load(users.getImageUri()).into(holder.user_profile);
+        if(FirebaseAuth.getInstance().getCurrentUser().getUid().equals(users.getUid())){
+            holder.itemView.setVisibility(View.GONE);
+            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0,0));
+        }else {
+            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+            holder.user_name.setText(users.getName());
+            holder.user_status.setText(users.getStatus());
+            Picasso.get().load(users.getImageUri()).into(holder.user_profile);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(homeActivity, ChatActivity.class);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(homeActivity, ChatActivity.class);
 
-                intent.putExtra("name",users.getName());
-                intent.putExtra("receiverImg",users.getImageUri());
-                intent.putExtra("uid",users.getUid());
+                    intent.putExtra("name",users.getName());
+                    intent.putExtra("receiverImg",users.getImageUri());
+                    intent.putExtra("uid",users.getUid());
 
-                homeActivity.startActivity(intent);
-            }
-        });
+                    homeActivity.startActivity(intent);
+                }
+            });
+        }
+
     }
 
 

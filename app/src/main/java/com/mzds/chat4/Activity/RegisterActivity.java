@@ -110,6 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                                 if(task.isSuccessful()){
                                                                     progressDialog.dismiss();
                                                                     startActivity(new Intent(RegisterActivity.this,HomeActivity.class));
+                                                                    finish();
                                                                 }else {
                                                                     progressDialog.dismiss();
                                                                     Toast.makeText(RegisterActivity.this, "Error in Creating a New user", Toast.LENGTH_SHORT).show();
@@ -134,6 +135,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             if(task.isSuccessful()){
                                                 progressDialog.dismiss();
                                                 startActivity(new Intent(RegisterActivity.this,HomeActivity.class));
+                                                finish();
                                             }else {
                                                 progressDialog.dismiss();
                                                 Toast.makeText(RegisterActivity.this, "Error in Creating a New user", Toast.LENGTH_SHORT).show();

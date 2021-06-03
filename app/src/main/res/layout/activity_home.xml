@@ -18,7 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:text="chat app revisi ke-8"
+            android:text="ChatApp 4"
+            android:textSize="30sp"
+            android:fontFamily="casual"
+            android:textStyle="bold"
             android:textColor="@color/white"/>
         <ImageView
             android:id="@+id/img_logout"

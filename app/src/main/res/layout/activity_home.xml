@@ -17,12 +17,19 @@
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="110dp"
             android:text="ChatApp 4"
             android:textSize="30sp"
             android:fontFamily="casual"
             android:textStyle="bold"
             android:textColor="@color/white"/>
+        <ImageView
+            android:id="@+id/img_setting"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_settings"/>
         <ImageView
             android:id="@+id/img_logout"
             android:layout_width="40dp"

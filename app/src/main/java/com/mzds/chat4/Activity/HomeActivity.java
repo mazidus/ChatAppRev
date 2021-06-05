@@ -1,5 +1,6 @@
 package com.mzds.chat4.Activity;
 
+import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +35,9 @@ public class HomeActivity extends AppCompatActivity {
     UserAdapter adapter;
     FirebaseDatabase database;
     ArrayList<Users> usersArrayList;
-    ImageView imgLogout;
+    ImageView imgLogout,imgSetting;
+
+    private long backPressTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +71,9 @@ public class HomeActivity extends AppCompatActivity {
         mainUserRecycleView.setLayoutManager(new LinearLayoutManager(this));
         adapter=new UserAdapter(HomeActivity.this,usersArrayList);
         mainUserRecycleView.setAdapter(adapter);
+
         imgLogout=findViewById(R.id.img_logout);
+        imgSetting=findViewById(R.id.img_setting);
 
         imgLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,9 +103,27 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        imgSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,SettingActivity.class));
+            }
+        });
+
         if(auth.getCurrentUser()==null)
         {
             startActivity(new Intent(HomeActivity.this,RegisterActivity.class));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(backPressTime+2000>System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        }else {
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+        }
+        backPressTime=System.currentTimeMillis();
     }
 }

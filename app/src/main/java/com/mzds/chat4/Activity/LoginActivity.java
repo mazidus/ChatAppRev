@@ -78,5 +78,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+        txt_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
     }
 }

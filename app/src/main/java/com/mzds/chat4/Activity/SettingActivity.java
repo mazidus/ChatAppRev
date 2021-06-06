@@ -92,12 +92,12 @@ public class SettingActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name=settingName.getText().toString();
-                String status=settingStatus.getText().toString();
+                String finalName=settingName.getText().toString();
+                String finalStatus=settingStatus.getText().toString();
 
                 progressDialog.show();
 
-                if(settingProfileImg!=null){
+                if(selectedImageUri!=null){
                     storageReference.putFile(selectedImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<UploadTask.TaskSnapshot> task) {
@@ -105,7 +105,7 @@ public class SettingActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String finalImageUri=uri.toString();
-                                    Users users=new Users(auth.getUid(),name,email,finalImageUri,status);
+                                    Users users=new Users(auth.getUid(),finalName,email,finalImageUri,finalStatus);
                                     reference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -128,7 +128,7 @@ public class SettingActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             String finalImageUri=uri.toString();
-                            Users users=new Users(auth.getUid(),name,email,finalImageUri,status);
+                            Users users=new Users(auth.getUid(),finalName,email,finalImageUri,finalStatus);
                             reference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull @NotNull Task<Void> task) {
@@ -136,6 +136,7 @@ public class SettingActivity extends AppCompatActivity {
                                         progressDialog.dismiss();
                                         Toast.makeText(SettingActivity.this, "Data changed", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(SettingActivity.this,HomeActivity.class));
+                                        finish();
                                     }else {
                                         progressDialog.dismiss();
                                         Toast.makeText(SettingActivity.this, "something wrong", Toast.LENGTH_SHORT).show();

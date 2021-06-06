@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                usersArrayList.clear();
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     Users users=dataSnapshot.getValue(Users.class);
                     usersArrayList.add(users);

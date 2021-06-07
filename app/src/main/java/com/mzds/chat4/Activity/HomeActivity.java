@@ -73,9 +73,10 @@ public class HomeActivity extends AppCompatActivity {
         adapter=new UserAdapter(HomeActivity.this,usersArrayList);
         mainUserRecycleView.setAdapter(adapter);
 
-        imgLogout=findViewById(R.id.img_logout);
+        //imgLogout=findViewById(R.id.img_logout);
         imgSetting=findViewById(R.id.img_setting);
 
+        /*
         imgLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +104,7 @@ public class HomeActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+         */
 
         imgSetting.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,12 +12,12 @@
         android:layout_height="60dp"
         android:gravity="right"
         android:orientation="horizontal"
-        android:background="@color/black">
+        android:background="#000099">
         <TextView
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="110dp"
+            android:layout_marginStart="80dp"
             android:text="ChatApp 4"
             android:textSize="30sp"
             android:fontFamily="casual"
@@ -30,20 +30,20 @@
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:src="@drawable/ic_settings"/>
-        <ImageView
+
+        <!--<ImageView
             android:id="@+id/img_logout"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:src="@drawable/ic_logout"/>
+            android:src="@drawable/ic_logout"/>-->
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainUserRecyclerView"
         android:layout_below="@id/toolbar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"/>
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

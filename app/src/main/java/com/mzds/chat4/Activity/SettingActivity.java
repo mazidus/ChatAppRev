@@ -3,7 +3,9 @@ package com.mzds.chat4.Activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -43,6 +45,7 @@ public class SettingActivity extends AppCompatActivity {
     TextView saveBtn,settingEmail;
     Uri selectedImageUri;
     String email;
+    CardView logoutBtn;
 
     ProgressDialog progressDialog;
 
@@ -64,6 +67,36 @@ public class SettingActivity extends AppCompatActivity {
         settingStatus=findViewById(R.id.setting_status);
         settingEmail=findViewById(R.id.setting_email);
         saveBtn=findViewById(R.id.save_button);
+
+        logoutBtn=findViewById(R.id.setting_logout);
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(SettingActivity.this,R.style.Dialog);
+                dialog.setContentView(R.layout.dialog_layout);
+
+                TextView yesBtn,noBtn;
+                yesBtn=dialog.findViewById(R.id.yes_btn);
+                noBtn=dialog.findViewById(R.id.no_btn);
+
+                yesBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(SettingActivity.this,RegisterActivity.class));
+                    }
+                });
+
+                noBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
 
         DatabaseReference reference=database.getReference().child("users").child(auth.getUid());
         StorageReference storageReference=storage.getReference().child("upload").child(auth.getUid());

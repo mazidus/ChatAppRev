@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity.SettingActivity">
     <androidx.cardview.widget.CardView
+        app:cardCornerRadius="15dp"
         android:id="@+id/setting_logout"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
@@ -13,8 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true">
         <LinearLayout
-            android:background="@drawable/button"
-            android:backgroundTint="#990000"
+            android:background="#990000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

@@ -41,13 +41,13 @@
             android:id="@+id/reg_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="pass"
+            android:hint="password"
             android:inputType="textPassword"/>
         <EditText
             android:id="@+id/reg_cpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="confirm pass"
+            android:hint="confirm password"
             android:inputType="textPassword"/>
         <TextView
             android:layout_margin="10dp"
